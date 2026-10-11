@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PCB Design Engineer | KiCad Hardware Portfolio</title>
+  <meta name="description" content="Portfolio of a Hardware & PCB Design Engineer specializing in KiCad, multi-layer routing, high-speed signals, and DFM-ready electronics.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Ambient background glow & circuit grid -->
+  <div class="grid-bg"></div>
+  <div class="glow-orb orb-1"></div>
+  <div class="glow-orb orb-2"></div>
+
+  <!-- Header / Navigation -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="brand">
+        <span class="brand-circuit">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="2" width="20" height="20" rx="4" />
+            <circle cx="8" cy="8" r="2" fill="currentColor"/>
+            <circle cx="16" cy="16" r="2" fill="currentColor"/>
+            <path d="M8 10v4h4" />
+            <path d="M16 14v-4h-4" />
+          </svg>
+        </span>
+        <span class="brand-text">PCB<span class="accent-text">.DEV</span></span>
+      </a>
+
+      <nav class="nav-links" id="nav-links">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#process" class="nav-link">Workflow</a>
+        <a href="#contact" class="nav-link btn-nav">Contact</a>
+      </nav>
+
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="status-indicator"></span>
+            Available for Freelance & Full-Time Hardware Engineering
+          </div>
+          
+          <h1 class="hero-title">
+            Hardware & <span class="gradient-text">PCB Design</span> Engineer
+          </h1>
+          
+          <p class="hero-subtitle">
+            Specializing in <strong>KiCad</strong> EDA, high-reliability multi-layer board layouts, 
+            microcontroller systems, and DFM/DFA-ready electronics manufactured with precision.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              Explore Projects
+            </a>
+            <a href="#contact" class="btn btn-outline">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              Get in Touch
+            </a>
+          </div>
+
+          <!-- Quick Metrics -->
+          <div class="metrics-bar">
+            <div class="metric-item">
+              <span class="metric-number">4+ Layer</span>
+              <span class="metric-label">Stackup Mastery</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-item">
+              <span class="metric-number">KiCad 8</span>
+              <span class="metric-label">Primary EDA Suite</span>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-item">
+              <span class="metric-number">100%</span>
+              <span class="metric-label">DFM / DRC Verified</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="pcb-showcase-card">
+            <div class="board-header">
+              <div class="board-dot red"></div>
+              <div class="board-dot yellow"></div>
+              <div class="board-dot green"></div>
+              <span class="board-title">KiCad_PCB_Editor :: board_v2.kicad_pcb</span>
+            </div>
+            <div class="board-canvas-art">
+              <!-- Interactive SVG PCB board graphic -->
+              <svg class="pcb-svg" viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
+                <!-- Board substrate -->
+                <rect x="20" y="20" width="360" height="280" rx="16" fill="#0c1613" stroke="#10b981" stroke-width="2" stroke-opacity="0.4"/>
+                
+                <!-- Mounting holes with copper pads -->
+                <circle cx="45" cy="45" r="14" fill="#082b20" stroke="#f59e0b" stroke-width="3" />
+                <circle cx="45" cy="45" r="7" fill="#050a09" />
+                <circle cx="355" cy="45" r="14" fill="#082b20" stroke="#f59e0b" stroke-width="3" />
+                <circle cx="355" cy="45" r="7" fill="#050a09" />
+                <circle cx="45" cy="275" r="14" fill="#082b20" stroke="#f59e0b" stroke-width="3" />
+                <circle cx="45" cy="275" r="7" fill="#050a09" />
+                <circle cx="355" cy="275" r="14" fill="#082b20" stroke="#f59e0b" stroke-width="3" />
+                <circle cx="355" cy="275" r="7" fill="#050a09" />
+
+                <!-- Traces -->
+                <g class="animated-traces" stroke="#10b981" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M60 100 H110 L140 130 H160" />
+                  <path d="M60 115 H105 L135 145 H160" />
+                  <path d="M60 130 H100 L130 160 H160" />
+
+                  <path d="M240 140 H270 L300 110 H340" />
+                  <path d="M240 155 H275 L305 125 H340" />
+                  <path d="M240 170 H280 L310 140 H340" />
+
+                  <!-- Differential pair simulation -->
+                  <path d="M200 80 V120" stroke="#06b6d4" stroke-width="2"/>
+                  <path d="M210 80 V120" stroke="#06b6d4" stroke-width="2"/>
+
+                  <!-- Ground vias -->
+                  <path d="M160 220 L130 250 H80" stroke="#34d399" />
+                  <path d="M240 220 L270 250 H320" stroke="#34d399" />
+                </g>
+
+                <!-- MCU QFN Package -->
+                <rect x="160" y="120" width="80" height="80" rx="4" fill="#182320" stroke="#34d399" stroke-width="1.5" />
+                <!-- QFN IC pins -->
+                <g fill="#f59e0b">
+                  <rect x="170" y="116" width="6" height="4" rx="1"/>
+                  <rect x="182" y="116" width="6" height="4" rx="1"/>
+                  <rect x="194" y="116" width="6" height="4" rx="1"/>
+                  <rect x="206" y="116" width="6" height="4" rx="1"/>
+                  <rect x="218" y="116" width="6" height="4" rx="1"/>
+
+                  <rect x="170" y="200" width="6" height="4" rx="1"/>
+                  <rect x="182" y="200" width="6" height="4" rx="1"/>
+                  <rect x="194" y="200" width="6" height="4" rx="1"/>
+                  <rect x="206" y="200" width="6" height="4" rx="1"/>
+                  <rect x="218" y="200" width="6" height="4" rx="1"/>
+
+                  <rect x="156" y="130" width="4" height="6" rx="1"/>
+                  <rect x="156" y="142" width="4" height="6" rx="1"/>
+                  <rect x="156" y="154" width="4" height="6" rx="1"/>
+                  <rect x="156" y="166" width="4" height="6" rx="1"/>
+
+                  <rect x="240" y="130" width="4" height="6" rx="1"/>
+                  <rect x="240" y="142" width="4" height="6" rx="1"/>
+                  <rect x="240" y="154" width="4" height="6" rx="1"/>
+                  <rect x="240" y="166" width="4" height="6" rx="1"/>
+                </g>
+                <text x="200" y="165" font-family="'JetBrains Mono', monospace" font-size="9" fill="#e2e8f0" text-anchor="middle" font-weight="bold">STM32 / ESP32</text>
+                
+                <!-- USB-C Port footprint -->
+                <rect x="180" y="32" width="40" height="24" rx="3" fill="#243330" stroke="#94a3b8" stroke-width="1.5" />
+                <text x="200" y="47" font-family="'JetBrains Mono', monospace" font-size="8" fill="#94a3b8" text-anchor="middle">USB-C</text>
+
+                <!-- SMD Crystals & Capacitors -->
+                <rect x="120" y="90" width="16" height="10" rx="1" fill="#475569" stroke="#cbd5e1" stroke-width="1" />
+                <rect x="264" y="90" width="16" height="10" rx="1" fill="#475569" stroke="#cbd5e1" stroke-width="1" />
+                <circle cx="185" cy="245" r="10" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+                <circle cx="215" cy="245" r="10" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/>
+                <text x="200" y="270" font-family="'JetBrains Mono', monospace" font-size="8" fill="#10b981" text-anchor="middle">Power Stage</text>
+              </svg>
+            </div>
+            <div class="board-footer">
+              <span class="terminal-text"><span class="prompt">$</span> kicad-cli pcb export gerbers --output-dir dist/</span>
+              <span class="live-tag">DRC PASSED (0 Errors)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">About Me</span>
+          <h2 class="section-title">Bridging Theory with Manufactured Silicon & Copper</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-card highlight">
+            <h3>Precision Hardware Engineering</h3>
+            <p>
+              I design custom printed circuit boards from initial block diagrams and schematic capture down to 
+              trace routing, plane partitioning, and prototype bring-up. My designs are optimized for 
+              <strong>signal integrity, thermal dissipation</strong>, and high manufacturing yields.
+            </p>
+            <p>
+              Whether it's compact 4-layer IoT modules or robust power supply stages, I ensure every footprint, 
+              clearance rule, and return current path follows stringent IPC standards.
+            </p>
+          </div>
+
+          <div class="about-features">
+            <div class="feature-box">
+              <div class="feature-icon">⚡</div>
+              <div>
+                <h4>First-Pass Success</h4>
+                <p>Strict Design Rule Checks (DRC) and 3D collision modeling minimize costly re-spins.</p>
+              </div>
+            </div>
+            <div class="feature-box">
+              <div class="feature-icon">🏭</div>
+              <div>
+                <h4>DFM & DFA Optimized</h4>
+                <p>Tailored for seamless assembly with JLCPCB, PCBWay, and European fab houses.</p>
+              </div>
+            </div>
+            <div class="feature-box">
+              <div class="feature-icon">📦</div>
+              <div>
+                <h4>KiCad 8 Ecosystem</h4>
+                <p>Proficient with custom footprint libraries, Python scripting, and 3D STEP integration.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section skills-section" id="skills">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Capabilities</span>
+          <h2 class="section-title">Technical Skills & Tooling</h2>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Skill Card 1 -->
+          <div class="skill-card">
+            <div class="skill-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            </div>
+            <h3 class="skill-title">EDA & CAD Tools</h3>
+            <ul class="skill-list">
+              <li><span class="bullet"></span>KiCad 7 & 8 (Schematic & PCB Editor)</li>
+              <li><span class="bullet"></span>KiCad 3D Raytracing & STEP Export</li>
+              <li><span class="bullet"></span>FreeCAD (Enclosure & Clearance fit)</li>
+              <li><span class="bullet"></span>EasyEDA / Altium Designer Basics</li>
+              <li><span class="bullet"></span>Gerber & ODB++ Inspection</li>
+            </ul>
+          </div>
+
+          <!-- Skill Card 2 -->
+          <div class="skill-card">
+            <div class="skill-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+            </div>
+            <h3 class="skill-title">Layout & Signal Integrity</h3>
+            <ul class="skill-list">
+              <li><span class="bullet"></span>2-Layer & 4-Layer Controlled Impedance</li>
+              <li><span class="bullet"></span>Differential Pair Routing (USB, CAN)</li>
+              <li><span class="bullet"></span>Decoupling & Low-ESR Return Paths</li>
+              <li><span class="bullet"></span>Thermal Vias & Copper Pour Balancing</li>
+              <li><span class="bullet"></span>EMC / EMI Mitigation Techniques</li>
+            </ul>
+          </div>
+
+          <!-- Skill Card 3 -->
+          <div class="skill-card">
+            <div class="skill-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            </div>
+            <h3 class="skill-title">Circuits & Architectures</h3>
+            <ul class="skill-list">
+              <li><span class="bullet"></span>MCUs: ESP32-S3, STM32, RP2040, ATmega</li>
+              <li><span class="bullet"></span>Power: Buck / Boost Regulators & LDOs</li>
+              <li><span class="bullet"></span>Battery: Li-Ion / LiPo BMS & Charger ICs</li>
+              <li><span class="bullet"></span>Buses: I2C, SPI, UART, RS-485, CAN bus</li>
+              <li><span class="bullet"></span>Sensors: IMUs, Current Monitors, Environmental</li>
+            </ul>
+          </div>
+
+          <!-- Skill Card 4 -->
+          <div class="skill-card">
+            <div class="skill-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+            </div>
+            <h3 class="skill-title">Lab, Assembly & DFM</h3>
+            <ul class="skill-list">
+              <li><span class="bullet"></span>SMD Soldering (0603, QFN, SOIC)</li>
+              <li><span class="bullet"></span>BOM & CPL Generation for Pick-and-Place</li>
+              <li><span class="bullet"></span>Oscilloscope & Logic Analyzer Debugging</li>
+              <li><span class="bullet"></span>Firmware Test Harness Bring-up</li>
+              <li><span class="bullet"></span>Thermal Camera & Power Profiling</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section projects-section" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Portfolio</span>
+          <h2 class="section-title">Featured Hardware & PCB Projects</h2>
+          <p class="section-description">Production-ready boards designed, routed, and tested using KiCad.</p>
+        </div>
+
+        <!-- Project Filters -->
+        <div class="filter-controls">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="mcu">IoT & MCUs</button>
+          <button class="filter-btn" data-filter="power">Power & BMS</button>
+          <button class="filter-btn" data-filter="rf">RF / High Speed</button>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1: ESP32-S3 IoT Development Board -->
+          <div class="project-card" data-category="mcu rf">
+            <div class="project-preview">
+              <div class="circuit-render-preview">
+                <div class="chip-graphic">
+                  <span class="chip-label">ESP32-S3</span>
+                </div>
+                <div class="spec-pills">
+                  <span>4 Layers</span>
+                  <span>USB-C OTG</span>
+                  <span>Wi-Fi/BLE</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-tags">
+                <span class="tag">KiCad 8</span>
+                <span class="tag">4-Layer Stackup</span>
+                <span class="tag">JLCPCB SMT</span>
+              </div>
+              <h3 class="project-title">ESP32-S3 Industrial Sensor Node</h3>
+              <p class="project-desc">
+                Custom compact 4-layer board featuring an ESP32-S3 microcontroller, dual USB-C ports with ESD protection, 
+                high-efficiency buck regulator, and isolated RS485 communication for noisy industrial environments.
+              </p>
+              <div class="specs-table">
+                <div class="spec-row">
+                  <span class="spec-name">Stackup:</span>
+                  <span class="spec-val">4-Layer (SIG-GND-PWR-SIG)</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-name">Dimensions:</span>
+                  <span class="spec-val">45mm × 32mm</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-name">Design Rules:</span>
+                  <span class="spec-val">0.15mm Track / 0.15mm Space</span>
+                </div>
+              </div>
+              <div class="project-actions">
+                <button class="btn btn-sm btn-outline view-details-btn" data-project="esp32">View Specs & Gerber</button>
+                <a href="https://github.com" target="_blank" rel="noopener" class="icon-link" title="Source Files">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: High-Power USB-C PD 100W Trigger & Buck -->
+          <div class="project-card" data-category="power">
+            <div class="project-preview">
+              <div class="circuit-render-preview power-theme">
+                <div class="chip-graphic power">
+                  <span class="chip-label">100W PD</span>
+                </div>
+                <div class="spec-pills">
+                  <span>2oz Copper</span>
+                  <span>Thermal Vias</span>
+                  <span>Synchronous Buck</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-tags">
+                <span class="tag">KiCad 8</span>
+                <span class="tag">Power Electronics</span>
+                <span class="tag">Thermal Design</span>
+              </div>
+              <h3 class="project-title">100W USB-C PD Adjustable Bench Converter</h3>
+              <p class="project-desc">
+                High-power DC buck board with integrated USB-PD controller IC negotiating 20V @ 5A. 
+                Engineered with 2oz outer copper, dense via-in-pad thermal relief, and ultra-low ESR solid tantalum capacitors.
+              </p>
+              <div class="specs-table">
+                <div class="spec-row">
+                  <span class="spec-name">Stackup:</span>
+                  <span class="spec-val">2-Layer (2oz Heavy Copper)</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-name">Efficiency:</span>
+                  <span class="spec-val">96.4% @ 5A Output</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-name">Protection:</span>
+                  <span class="spec-val">OVP, OCP & Thermal Shutdown</span>
+                </div>
+              </div>
+              <div class="project-actions">
+                <button class="btn btn-sm btn-outline view-details-btn" data-project="usbpnd">View Specs & Gerber</button>
+                <a href="https://github.com" target="_blank" rel="noopener" class="icon-link" title="Source Files">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+              </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: Smart Li-Ion 3S Battery Management System -->
+          <div class="project-card" data-category="power mcu">
+            <div class="project-preview">
+              <div class="circuit-render-preview bms-theme">
+                <div class="chip-graphic bms">
+                  <span class="chip-label">3S BMS</span>
+                </div>
+                <div class="spec-pills">
+                  <span>Cell Balancing</span>
+                  <span>I2C Fuel Gauge</span>
+                  <span>Dual N-FETs</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-tags">
+                <span class="tag">KiCad 8</span>
+                <span class="tag">Battery Protection</span>
+                <span class="tag">Low Noise</span>
+              </div>
+              <h3 class="project-title">Precision 3S Li-Ion BMS & Active Telemetry</h3>
+              <p class="project-desc">
+                Battery management module with autonomous hardware overcurrent/short protection, 
+                passive resistor cell balancing, and an I2C gas-gauge IC for micro-volt accurate charge reporting.
+              </p>
+              <div class="specs-table">
+                <div class="spec-row">
+                  <span class="spec-name">Stackup:</span>
+                  <span class="spec-val">4-Layer (Low Inductance Ground)</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-name">Current:</span>
+                  <span class="spec-val">20A Continuous / 40A Peak</span>
+                </div>
+                <div class="spec-row">
+                  <span class="spec-name">Standby Drain:</span>
+                  <span class="spec-val">&lt; 15µA Sleep State</span>
+                </div>
+              </div>
+              <div class="project-actions">
+                <button class="btn btn-sm btn-outline view-details-btn" data-project="bms">View Specs & Gerber</button>
+                <a href="https://github.com" target="_blank" rel="noopener" class="icon-link" title="Source Files">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Engineering Workflow Section -->
+    <section class="section workflow-section" id="process">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Engineering Workflow</span>
+          <h2 class="section-title">From Concept to Assembled PCB</h2>
+          <p class="section-description">A systematic design methodology guaranteeing first-pass manufacturing yield.</p>
+        </div>
+
+        <div class="workflow-steps">
+          <div class="step-card">
+            <span class="step-num">01</span>
+            <h4>Schematic & ERC</h4>
+            <p>Component selection based on supply chain availability, symbol creation, Electrical Rules Check.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-num">02</span>
+            <h4>Stackup & Constraints</h4>
+            <p>Substrate thickness, dielectric constant, copper weights, and controlled trace impedance calculation.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-num">03</span>
+            <h4>Routing & Thermal Plan</h4>
+            <p>Critical nets first, ground plane continuity, differential pairing, and thermal dissipation paths.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-num">04</span>
+            <h4>DRC & DFM Verification</h4>
+            <p>Fabrication clearance checks, solder mask expansion, annular ring verification, and 3D enclosure check.</p>
+          </div>
+          <div class="step-card">
+            <span class="step-num">05</span>
+            <h4>Fab & Assembly</h4>
+            <p>Automated Gerber X2, drill files, BOM, and Pick-and-Place (CPL) package generation for seamless fab.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div class="contact-details">
+            <span class="section-tag">Get In Touch</span>
+            <h2 class="contact-title">Let's Build Reliable Hardware Together</h2>
+            <p class="contact-text">
+              Have a PCB schematic ready for layout, need custom board revisions, or looking to hire a dedicated 
+              KiCad hardware design engineer? Drop a message and let's discuss your project requirements!
+            </p>
+            
+            <div class="contact-info-list">
+              <div class="contact-info-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <span id="email-address">your.email@example.com</span>
+                <button class="copy-btn" id="copy-email-btn" title="Copy Email">Copy</button>
+              </div>
+              <div class="contact-info-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                <a href="https://linkedin.com" target="_blank" rel="noopener">linkedin.com/in/yourprofile</a>
+              </div>
+              <div class="contact-info-item">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                <a href="https://github.com" target="_blank" rel="noopener">github.com/yourusername</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <form class="contact-form" id="contact-form" onsubmit="event.preventDefault(); handleFormSubmit();">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="john@company.com" required>
+            </div>
+            <div class="form-group">
+              <label for="project-type">Project Scope</label>
+              <select id="project-type" name="project-type">
+                <option value="kicad-layout">New PCB Layout from Schematic (KiCad)</option>
+                <option value="complete-hardware">Full Schematic + Multi-Layer PCB</option>
+                <option value="redesign-dfm">DFM Optimization & Re-spin</option>
+                <option value="consulting">Hardware Review & Bring-up Consulting</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message & Board Requirements</label>
+              <textarea id="message" name="message" rows="4" placeholder="Tell me about your board layer count, target MCU, dimensions, and timeline..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" id="submit-btn">
+              Send Message
+            </button>
+            <div class="form-status" id="form-status"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Project Details Modal -->
+  <div class="modal" id="project-modal" aria-hidden="true">
+    <div class="modal-overlay" id="modal-overlay"></div>
+    <div class="modal-dialog">
+      <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
+      <div class="modal-body" id="modal-content">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; <span id="current-year">2026</span> PCB Hardware Engineer. Designed for high reliability & manufactured with KiCad.</p>
+      <a href="#hero" class="back-to-top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
