@@ -211,7 +211,96 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 4. Copy Email Feature
+  // 4. In-Card Interactive Multi-View Tabs (3D / 2D Layout / Schematic)
+  const projectViews = {
+    datalogger: {
+      '3d': { src: 'assets/images/datalogger-3d.png', badge: '3D KiCad View' },
+      'pcb': { src: 'assets/images/datalogger-pcb.png', badge: '2D PCB Layout' },
+      'sch': { src: 'assets/images/datalogger-schematic.png', badge: 'Schematic Sheet' }
+    },
+    safesteps: {
+      '3d': { src: 'assets/images/safesteps-3d.png', badge: '3D KiCad View' },
+      'pcb': { src: 'assets/images/safesteps-pcb.png', badge: '2D PCB Layout' },
+      'sch': { src: 'assets/images/safesteps-schematic.png', badge: 'Schematic Sheet' }
+    }
+  };
+
+  // Preload tab images for zero latency
+  Object.values(projectViews).forEach(views => {
+    Object.values(views).forEach(item => {
+      const img = new Image();
+      img.src = item.src;
+    });
+  });
+
+  const tabContainers = document.querySelectorAll('.view-tabs');
+  tabContainers.forEach(container => {
+    const projectId = container.getAttribute('data-project-id');
+    const tabs = container.querySelectorAll('.view-tab-btn');
+    const targetImg = document.getElementById(`img-${projectId}`);
+    const targetBadge = document.getElementById(`badge-${projectId}`);
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', (e) => {
+        e.stopPropagation(); // prevent triggering parent card click
+        const view = tab.getAttribute('data-view');
+        
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        if (projectViews[projectId] && projectViews[projectId][view] && targetImg) {
+          targetImg.style.opacity = '0.35';
+          targetImg.style.transform = 'scale(0.98)';
+          
+          setTimeout(() => {
+            targetImg.src = projectViews[projectId][view].src;
+            if (targetBadge) {
+              targetBadge.textContent = projectViews[projectId][view].badge;
+            }
+            targetImg.style.opacity = '1';
+            targetImg.style.transform = 'scale(1)';
+          }, 120);
+        }
+      });
+    });
+  });
+
+  // 5. Clickable Preview opens Project Inspection Modal
+  document.querySelectorAll('.clickable-preview').forEach(preview => {
+    preview.addEventListener('click', (e) => {
+      const pid = preview.getAttribute('data-project');
+      if (pid) {
+        openModal(pid);
+      }
+    });
+  });
+
+  // 6. Navigation Scroll Spy (Highlight active section)
+  const sections = document.querySelectorAll('section[id]');
+  const navItems = document.querySelectorAll('.nav-links .nav-link:not(.btn-nav)');
+
+  function updateNavSpy() {
+    const scrollY = window.pageYOffset;
+    sections.forEach(current => {
+      const sectionHeight = current.offsetHeight;
+      const sectionTop = current.offsetTop - 120;
+      const sectionId = current.getAttribute('id');
+      
+      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+        navItems.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${sectionId}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateNavSpy, { passive: true });
+  updateNavSpy();
+
+  // 7. Copy Email Feature
   const copyBtn = document.getElementById('copy-email-btn');
   const emailSpan = document.getElementById('email-address');
 
@@ -233,7 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 5. Update footer year
+  // 8. Update footer year
   const yearEl = document.getElementById('current-year');
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
