@@ -75,6 +75,11 @@ document.addEventListener('DOMContentLoaded', () => {
       title: "MCU Data Logger – ATmega328P Acquisition Board",
       badge: "KiCad 9 :: 2-Layer Embedded Acquisition Board",
       overview: "End-to-end battery-backed embedded data logging hardware designed in KiCad using modular hierarchical sheets and optimized 2-layer routing.",
+      images: [
+        { url: "assets/images/datalogger-3d.png", label: "3D KiCad Raytraced Board" },
+        { url: "assets/images/datalogger-pcb.png", label: "2D PCB Layout & Routing" },
+        { url: "assets/images/datalogger-schematic.png", label: "KiCad Schematic (Sheet 1)" }
+      ],
       specs: [
         { label: "Microcontroller", value: "ATmega328P-AU (32-pin TQFP)" },
         { label: "Real-Time Clock", value: "DS1337 I2C RTC with dedicated crystal oscillator" },
@@ -96,6 +101,11 @@ document.addEventListener('DOMContentLoaded', () => {
       title: "SafeSteps – ESP32 Personal Safety Device",
       badge: "KiCad 9 :: IoT, Cellular & Telematics Hardware",
       overview: "Custom hardware platform for a portable personal safety device integrating satellite navigation, cellular communication, and tactile emergency alerts.",
+      images: [
+        { url: "assets/images/safesteps-3d.png", label: "3D KiCad Board View" },
+        { url: "assets/images/safesteps-pcb.png", label: "2D PCB Layout & Routing" },
+        { url: "assets/images/safesteps-schematic.png", label: "KiCad Schematic Sheet" }
+      ],
       specs: [
         { label: "Main Processor", value: "ESP32 (Wi-Fi, Bluetooth BLE, Dual Tensilica Cores)" },
         { label: "GPS / GNSS Module", value: "NEO-6M Satellite Positioning Engine" },
@@ -124,12 +134,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const data = projectData[projectId];
     if (!data) return;
 
+    const galleryHtml = data.images && data.images.length ? `
+      <div style="margin-bottom: 1.5rem;">
+        <h4 class="modal-gallery-title">KiCad Hardware Visuals (Click to view full size)</h4>
+        <div class="modal-gallery">
+          ${data.images.map(img => `
+            <a href="${img.url}" target="_blank" rel="noopener" class="modal-gallery-item" title="Click to view full resolution in new tab">
+              <img src="${img.url}" alt="${img.label}">
+              <span class="modal-gallery-label">${img.label} ↗</span>
+            </a>
+          `).join('')}
+        </div>
+      </div>
+    ` : '';
+
     modalContent.innerHTML = `
       <div style="margin-bottom: 1.25rem;">
         <span class="tag" style="margin-bottom: 0.5rem; display: inline-block;">${data.badge}</span>
         <h3 style="font-size: 1.5rem; color: #F8FAFC; margin-bottom: 0.5rem;">${data.title}</h3>
         <p style="color: #94A3B8; font-size: 0.95rem;">${data.overview}</p>
       </div>
+
+      ${galleryHtml}
 
       <div style="margin-bottom: 1.5rem;">
         <h4 style="font-size: 1.02rem; color: #38BDF8; margin-bottom: 0.75rem; font-family: var(--font-mono);">Hardware Specifications & Circuit Details</h4>
