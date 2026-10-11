@@ -1,4 +1,4 @@
-// Interactive behaviors for KiCad PCB Designer Portfolio
+// Interactive behaviors for Siddharth Kote's PCB Portfolio
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Mobile Menu Toggle
@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
       navLinks.classList.toggle('active');
     });
 
-    // Close menu when clicking link
     navLinks.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', () => {
         navLinks.classList.remove('active');
@@ -50,63 +49,69 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 3. Project Detail Modal Data & Logic
   const projectData = {
-    esp32: {
-      title: "ESP32-S3 Industrial Sensor Node",
-      badge: "KiCad 8 :: 4-Layer Board",
-      overview: "Designed for high-reliability sensor acquisition in electrically noisy industrial automation setups.",
+    solar: {
+      title: "Tiny Solar Supply (Sunlight In, 3.3 V Out)",
+      badge: "KiCad 9 :: Micropower Boost Converter (Elektor Lab)",
+      overview: "Designed based on the Elektor Lab design to convert a solar-charged 1.2V Ni-MH AA/AAA cell into a steady, regulated 3.3V power rail suitable for microcontrollers and IoT sensors.",
       specs: [
-        { label: "Layer Count", value: "4 Layers (Signal - GND - 3.3V Plane - Signal)" },
-        { label: "Substrate & Core", value: "FR-4 Standard TG150, 1.6mm thickness" },
-        { label: "Copper Weight", value: "1oz Outer / 1oz Inner" },
-        { label: "Minimum Trace / Clearance", value: "0.15mm (6 mil) / 0.15mm (6 mil)" },
-        { label: "MCU Package", value: "ESP32-S3-WROOM-1 (or QFN56 direct layout)" },
-        { label: "Interfaces", value: "Isolated RS-485, Dual USB-C (OTG & Debug), I2C, SPI" },
-        { label: "Protective Circuits", value: "USBLC6-4SC6 ESD Diodes, PTC resettable fuses, TVS diodes on bus lines" },
-        { label: "Fabrication Ready", value: "Gerber RS-274X, Drill file, IPC-D-356 Netlist, CPL/BOM" }
+        { label: "Step-Up Controller", value: "AP3015 / AP3015A (Diodes Inc.)" },
+        { label: "Input Voltage Range", value: "1.0V to 1.2V Ni-MH Cell (starts up down to 1.0V for A-version)" },
+        { label: "Output Voltage", value: "Regulated 3.3V (Set by Vout = 1.23 × (1 + R1/R2) with R1=1M, R2=604k)" },
+        { label: "Output Current", value: "100 mA (AP3015A) / up to 350 mA (AP3015 standard)" },
+        { label: "Automatic Shutdown", value: "2N7002 SOT-23 N-FET (Shuts down regulator while charging under sunlight)" },
+        { label: "Schottky Diodes", value: "2x SS14 (DO-214AC)" },
+        { label: "Inductor", value: "10 µH, 680 mA rated current" },
+        { label: "Passives Footprints", value: "0805 Resistors & Capacitors (4.7µF, 22µF, 10pF)" }
       ],
       highlights: [
-        "Uninterrupted solid Ground plane on Layer 2 directly under RF traces for controlled 50Ω antenna feedline impedance.",
-        "Differential routing for USB D+/D- with tight length matching (< 0.1mm skew).",
-        "Galvanic isolation on RS-485 transceiver with isolated DC-DC converter prevent ground loops."
-      ]
+        "Automatic day/night solar switching: solar voltage biases the 2N7002 gate, pulling /SHDN low to disable the boost converter while charging, then releasing /SHDN at dusk.",
+        "Precision resistor divider (R1=1MΩ, R2=604kΩ 1%) generates exactly 3.3V for clean MCU powering.",
+        "Ultra-compact layout optimized to fit inside miniature weatherproof solar lighting enclosures.",
+        "Comprehensive component placement with dedicated ground returns for high-frequency switching loops."
+      ],
+      githubLink: "https://github.com/siddharthkote25"
     },
-    usbpnd: {
-      title: "100W USB-C PD Adjustable Bench Converter",
-      badge: "KiCad 8 :: Power Electronics",
-      overview: "High-density DC-DC step-down buck module powered by USB Type-C Power Delivery (PD 3.0 up to 20V @ 5A).",
+    datalogger: {
+      title: "MCU Data Logger – ATmega328P Acquisition Board",
+      badge: "KiCad 9 :: 2-Layer Embedded Acquisition Board",
+      overview: "End-to-end battery-backed embedded data logging hardware designed in KiCad using modular hierarchical sheets and optimized 2-layer routing.",
       specs: [
-        { label: "Layer Count", value: "2 Layers (Heavy Copper)" },
-        { label: "Copper Weight", value: "2oz (70µm) for high current handling" },
-        { label: "Thermal Relief", value: "Via stitching under MOSFETs and inductor" },
-        { label: "Controller IC", value: "CH224K PD sink negotiator + Synchronous Buck Controller" },
-        { label: "Continuous Current", value: "5.0A continuous with < 45°C temp rise" },
-        { label: "Switching Frequency", value: "500 kHz (Optimized for inductor footprint)" },
-        { label: "Ripple & Noise", value: "< 25mV peak-to-peak under full load" }
+        { label: "Microcontroller", value: "ATmega328P-AU (32-pin TQFP)" },
+        { label: "Real-Time Clock", value: "DS1337 I2C RTC with dedicated crystal oscillator" },
+        { label: "Non-Volatile Storage", value: "2x 24LC1025 I2C EEPROMs (256 KB total memory)" },
+        { label: "Communication Buses", value: "I2C, UART, GPIO headers, and standard 6-pin ICSP" },
+        { label: "Board Architecture", value: "Hierarchical Schematic (MCU, RTC, EEPROM, Connectors)" },
+        { label: "PCB Stackup", value: "2-Layer Board with Top/Bottom Solid Copper Ground Fills" },
+        { label: "Manufacturability", value: "100% DRC verified, standard 0.25mm trace/space, Gerber RS-274X" }
       ],
       highlights: [
-        "Direct thermal dissipation planes utilizing both top and bottom copper pours tied through an array of 0.3mm thermal vias.",
-        "Short, wide high-di/dt current loops to minimize radiated EMI and ringing.",
-        "Integrated CC pin pull-down logic and automatic 5V/9V/12V/15V/20V profile negotiation."
-      ]
+        "Hierarchical schematic sheets ensuring strict signal modularity, net labeling, and power flags.",
+        "Strategically located high-frequency crystal and decoupling capacitors placed in close proximity to ATmega328P VCC/GND pins.",
+        "I2C pull-up resistors tuned for reliable high-speed EEPROM and RTC bus communication without bus contention.",
+        "Full copper ground pours with thermal relief on both layers ensuring low impedance and easy soldering."
+      ],
+      githubLink: "https://github.com/siddharthkote25"
     },
-    bms: {
-      title: "Precision 3S Li-Ion BMS & Active Telemetry",
-      badge: "KiCad 8 :: Battery Management",
-      overview: "3-Series Lithium-Ion protection and monitoring circuit with autonomous hardware protection and digital telemetry.",
+    safesteps: {
+      title: "SafeSteps – ESP32 Personal Safety Device",
+      badge: "KiCad 9 :: IoT, Cellular & Telematics Hardware",
+      overview: "Custom hardware platform for a portable personal safety device integrating satellite navigation, cellular communication, and tactile emergency alerts.",
       specs: [
-        { label: "Battery Chemistry", value: "3S Li-Ion / LiPo (9.0V - 12.6V nominal)" },
-        { label: "Layer Count", value: "4 Layers" },
-        { label: "Protection Thresholds", value: "Overvoltage: 4.25V/cell | Undervoltage: 2.80V/cell" },
-        { label: "Balance Current", value: "100mA passive dissipation per cell" },
-        { label: "Continuous Discharge", value: "20A (Dual low-Rds(on) N-Channel MOSFETs)" },
-        { label: "Telemetry Interface", value: "I2C fuel gauge (Voltage, Current, State of Charge, Temperature)" },
-        { label: "Quiescent Current", value: "< 12 µA in sleep / storage state" }
+        { label: "Main Processor", value: "ESP32 (Wi-Fi, Bluetooth BLE, Dual Tensilica Cores)" },
+        { label: "GPS / GNSS Module", value: "NEO-6M Satellite Positioning Engine" },
+        { label: "Cellular Telemetry", value: "A7670C 4G LTE High-Speed Cellular Module" },
+        { label: "User Interface / Alert", value: "Emergency SOS push-button, status LEDs, and high-decibel Buzzer" },
+        { label: "Power Supply", value: "Rechargeable Li-Po battery input with HT7333 3.3V ultra-low quiescent LDO" },
+        { label: "Communication Links", value: "High-speed UART interfaces from ESP32 to GPS and LTE modems" },
+        { label: "Library Assets", value: "Custom schematic symbols & high-accuracy PCB footprint models created in KiCad" }
       ],
       highlights: [
-        "Dedicated Kelvin connections to current sensing shunt resistor for high-accuracy coulomb counting.",
-        "Independent NTC thermistor sensor footprint positioned adjacent to cell terminals.",
-        "Clean physical isolation barriers between high-current discharge paths and sensitive analog ADC sensing nets."
-      ]
+        "Configured specialized net classes and clearance constraints for cellular RF and high-current power nets.",
+        "Integrated ultra-low dropout HT7333 regulator delivering steady 3.3V while maximizing battery runtime from single-cell Li-Po.",
+        "Component layout engineered to minimize digital switching noise coupling into the sensitive GPS RF receiver.",
+        "Full design verified with DRC (0 errors) and complete production Gerber export."
+      ],
+      githubLink: "https://github.com/siddharthkote25"
     }
   };
 
@@ -122,12 +127,12 @@ document.addEventListener('DOMContentLoaded', () => {
     modalContent.innerHTML = `
       <div style="margin-bottom: 1.25rem;">
         <span class="tag" style="margin-bottom: 0.5rem; display: inline-block;">${data.badge}</span>
-        <h3 style="font-size: 1.6rem; color: #f1f5f9; margin-bottom: 0.5rem;">${data.title}</h3>
+        <h3 style="font-size: 1.5rem; color: #f1f5f9; margin-bottom: 0.5rem;">${data.title}</h3>
         <p style="color: #94a3b8; font-size: 0.95rem;">${data.overview}</p>
       </div>
 
       <div style="margin-bottom: 1.5rem;">
-        <h4 style="font-size: 1.05rem; color: #34d399; margin-bottom: 0.75rem; font-family: var(--font-mono);">Fabrication & Layout Specifications</h4>
+        <h4 style="font-size: 1.02rem; color: #34d399; margin-bottom: 0.75rem; font-family: var(--font-mono);">Hardware Specifications & Circuit Details</h4>
         <div style="background: #091210; border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
           ${data.specs.map(s => `
             <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-family: var(--font-mono);">
@@ -139,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
 
       <div style="margin-bottom: 1.5rem;">
-        <h4 style="font-size: 1.05rem; color: #34d399; margin-bottom: 0.75rem; font-family: var(--font-mono);">Key Engineering Highlights</h4>
+        <h4 style="font-size: 1.02rem; color: #34d399; margin-bottom: 0.75rem; font-family: var(--font-mono);">Engineering Highlights</h4>
         <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem;">
           ${data.highlights.map(h => `
             <li style="font-size: 0.88rem; color: #cbd5e1; display: flex; gap: 0.6rem; line-height: 1.5;">
@@ -150,7 +155,9 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
 
       <div style="padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: flex-end; gap: 0.8rem;">
-        <button class="btn btn-primary btn-sm" onclick="alert('In your real deployment, link this button to your GitHub repository or Gerber ZIP download!')">Download Fabrication Files</button>
+        <a href="${data.githubLink}" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+          View on GitHub &rarr;
+        </a>
       </div>
     `;
 
@@ -220,12 +227,12 @@ function handleFormSubmit() {
   setTimeout(() => {
     if (statusEl) {
       statusEl.style.color = '#34d399';
-      statusEl.textContent = '✓ Message received! I will review your requirements and respond promptly.';
+      statusEl.textContent = '✓ Message received! Siddharth will get back to you shortly.';
     }
     if (submitBtn) {
       submitBtn.textContent = 'Sent Successfully';
     }
     const form = document.getElementById('contact-form');
     if (form) form.reset();
-  }, 900);
+  }, 800);
 }
