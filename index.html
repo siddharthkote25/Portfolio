@@ -62,7 +62,7 @@
           <h1 class="hero-title">
             Hi, I'm <span class="gradient-text">Siddharth Kote</span>
           </h1>
-          <p class="hero-role" style="font-family: var(--font-mono); color: var(--emerald-primary); font-size: 1.15rem; margin-bottom: 0.8rem; font-weight: 600;">
+          <p class="hero-role" style="font-family: var(--font-mono); color: var(--accent-primary); font-size: 1.15rem; margin-bottom: 0.8rem; font-weight: 600;">
             PCB Design Engineer • Electronics Hardware
           </p>
           
@@ -115,20 +115,20 @@
               <!-- Interactive SVG PCB board graphic -->
               <svg class="pcb-svg" viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
                 <!-- Board substrate -->
-                <rect x="20" y="20" width="360" height="280" rx="16" fill="#0c1613" stroke="#10b981" stroke-width="2" stroke-opacity="0.5"/>
+                <rect x="20" y="20" width="360" height="280" rx="16" fill="#0c1322" stroke="#1E293B" stroke-width="2" />
                 
-                <!-- Mounting holes with copper pads -->
-                <circle cx="45" cy="45" r="14" fill="#082b20" stroke="#f59e0b" stroke-width="3" />
-                <circle cx="45" cy="45" r="7" fill="#050a09" />
-                <circle cx="355" cy="45" r="14" fill="#082b20" stroke="#f59e0b" stroke-width="3" />
-                <circle cx="355" cy="45" r="7" fill="#050a09" />
-                <circle cx="45" cy="275" r="14" fill="#082b20" stroke="#f59e0b" stroke-width="3" />
-                <circle cx="45" cy="275" r="7" fill="#050a09" />
-                <circle cx="355" cy="275" r="14" fill="#082b20" stroke="#f59e0b" stroke-width="3" />
-                <circle cx="355" cy="275" r="7" fill="#050a09" />
+                <!-- Mounting holes with pads -->
+                <circle cx="45" cy="45" r="14" fill="#101827" stroke="#2563EB" stroke-width="2.5" />
+                <circle cx="45" cy="45" r="7" fill="#080D1A" />
+                <circle cx="355" cy="45" r="14" fill="#101827" stroke="#2563EB" stroke-width="2.5" />
+                <circle cx="355" cy="45" r="7" fill="#080D1A" />
+                <circle cx="45" cy="275" r="14" fill="#101827" stroke="#2563EB" stroke-width="2.5" />
+                <circle cx="45" cy="275" r="7" fill="#080D1A" />
+                <circle cx="355" cy="275" r="14" fill="#101827" stroke="#2563EB" stroke-width="2.5" />
+                <circle cx="355" cy="275" r="7" fill="#080D1A" />
 
                 <!-- Traces -->
-                <g class="animated-traces" stroke="#10b981" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <g class="animated-traces" stroke="#38BDF8" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M60 100 H110 L140 130 H160" />
                   <path d="M60 115 H105 L135 145 H160" />
                   <path d="M60 130 H100 L130 160 H160" />
@@ -138,18 +138,18 @@
                   <path d="M240 170 H280 L310 140 H340" />
 
                   <!-- I2C Bus traces -->
-                  <path d="M200 80 V120" stroke="#06b6d4" stroke-width="2"/>
-                  <path d="M210 80 V120" stroke="#06b6d4" stroke-width="2"/>
+                  <path d="M200 80 V120" stroke="#2563EB" stroke-width="2"/>
+                  <path d="M210 80 V120" stroke="#2563EB" stroke-width="2"/>
 
                   <!-- Ground vias -->
-                  <path d="M160 220 L130 250 H80" stroke="#34d399" />
-                  <path d="M240 220 L270 250 H320" stroke="#34d399" />
+                  <path d="M160 220 L130 250 H80" stroke="#38BDF8" />
+                  <path d="M240 220 L270 250 H320" stroke="#38BDF8" />
                 </g>
 
                 <!-- MCU QFP/QFN Package -->
-                <rect x="160" y="120" width="80" height="80" rx="4" fill="#182320" stroke="#34d399" stroke-width="1.5" />
+                <rect x="160" y="120" width="80" height="80" rx="4" fill="#101827" stroke="#38BDF8" stroke-width="1.5" />
                 <!-- IC pins -->
-                <g fill="#f59e0b">
+                <g fill="#38BDF8">
                   <rect x="170" y="116" width="6" height="4" rx="1"/>
                   <rect x="182" y="116" width="6" height="4" rx="1"/>
                   <rect x="194" y="116" width="6" height="4" rx="1"/>
@@ -172,22 +172,22 @@
                   <rect x="240" y="154" width="4" height="6" rx="1"/>
                   <rect x="240" y="166" width="4" height="6" rx="1"/>
                 </g>
-                <text x="200" y="165" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#e2e8f0" text-anchor="middle" font-weight="bold">ATmega328P-AU</text>
+                <text x="200" y="165" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#F8FAFC" text-anchor="middle" font-weight="bold">ATmega328P-AU</text>
                 
                 <!-- ICSP Header footprint -->
-                <rect x="175" y="36" width="50" height="20" rx="3" fill="#243330" stroke="#94a3b8" stroke-width="1.2" />
-                <text x="200" y="50" font-family="'JetBrains Mono', monospace" font-size="8" fill="#94a3b8" text-anchor="middle">ICSP HEADER</text>
+                <rect x="175" y="36" width="50" height="20" rx="3" fill="#101827" stroke="#1E293B" stroke-width="1.2" />
+                <text x="200" y="50" font-family="'JetBrains Mono', monospace" font-size="8" fill="#94A3B8" text-anchor="middle">ICSP HEADER</text>
 
                 <!-- RTC & EEPROMs -->
-                <rect x="75" y="125" width="30" height="30" rx="2" fill="#20332c" stroke="#38bdf8" stroke-width="1.2" />
-                <text x="90" y="142" font-family="'JetBrains Mono', monospace" font-size="7" fill="#38bdf8" text-anchor="middle">DS1337</text>
+                <rect x="75" y="125" width="30" height="30" rx="2" fill="#101827" stroke="#38BDF8" stroke-width="1.2" />
+                <text x="90" y="142" font-family="'JetBrains Mono', monospace" font-size="7" fill="#38BDF8" text-anchor="middle">DS1337</text>
 
-                <rect x="295" y="125" width="30" height="30" rx="2" fill="#20332c" stroke="#fbbf24" stroke-width="1.2" />
-                <text x="310" y="142" font-family="'JetBrains Mono', monospace" font-size="7" fill="#fbbf24" text-anchor="middle">24LC1025</text>
+                <rect x="295" y="125" width="30" height="30" rx="2" fill="#101827" stroke="#2563EB" stroke-width="1.2" />
+                <text x="310" y="142" font-family="'JetBrains Mono', monospace" font-size="7" fill="#2563EB" text-anchor="middle">24LC1025</text>
 
                 <!-- Crystal and decoupling -->
-                <rect x="126" y="185" width="16" height="8" rx="1" fill="#475569" stroke="#cbd5e1" stroke-width="1" />
-                <text x="200" y="270" font-family="'JetBrains Mono', monospace" font-size="8" fill="#10b981" text-anchor="middle">GND Copper Fill Plane</text>
+                <rect x="126" y="185" width="16" height="8" rx="1" fill="#1E293B" stroke="#64748B" stroke-width="1" />
+                <text x="200" y="270" font-family="'JetBrains Mono', monospace" font-size="8" fill="#94A3B8" text-anchor="middle">GND Copper Fill Plane</text>
               </svg>
             </div>
             <div class="board-footer">
@@ -219,7 +219,7 @@
               Comfortable with microcontroller-based circuits (<strong>ATmega328P, ESP32</strong>), power supply circuits (boost converters, LDOs), 
               and communication protocols including <strong>I2C, UART, SPI/ICSP</strong>, GPS, and 4G LTE modules.
             </p>
-            <p style="color: #34d399; font-weight: 500;">
+            <p style="color: var(--accent-primary); font-weight: 500;">
               Seeking an entry-level PCB Design Engineer / Hardware Engineer role to contribute to reliable electronic products.
             </p>
           </div>
@@ -252,7 +252,7 @@
     </section>
 
     <!-- Education & Certifications Section -->
-    <section class="section education-section" id="education" style="background: rgba(13, 23, 21, 0.4); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+    <section class="section education-section" id="education" style="background: rgba(16, 24, 39, 0.45); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
       <div class="container">
         <div class="section-header">
           <span class="section-tag">Background</span>
@@ -264,7 +264,7 @@
           <div class="skill-card">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.8rem;">
               <span class="tag">B.Tech Degree</span>
-              <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--emerald-primary);">2022 – 2026</span>
+              <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent-primary);">2022 – 2026</span>
             </div>
             <h3 style="font-size: 1.25rem; margin-bottom: 0.3rem;">B.Tech in Electronics & Communication Engineering</h3>
             <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.8rem;">Nutan College of Engineering and Research, Pune, India</p>
@@ -281,13 +281,13 @@
                 <div style="display: flex; align-items: center; gap: 0.5rem; font-weight: 600; color: var(--text-main);">
                   <span class="bullet"></span> PCB Design with KiCad – Updated for KiCad 9
                 </div>
-                <span style="color: var(--emerald-primary); font-family: var(--font-mono); font-size: 0.8rem; padding-left: 1.1rem;">Udemy Certified</span>
+                <span style="color: var(--accent-primary); font-family: var(--font-mono); font-size: 0.8rem; padding-left: 1.1rem;">Udemy Certified</span>
               </li>
               <li style="flex-direction: column; align-items: flex-start; gap: 0.2rem;">
                 <div style="display: flex; align-items: center; gap: 0.5rem; font-weight: 600; color: var(--text-main);">
                   <span class="bullet"></span> PCB Design Course
                 </div>
-                <span style="color: var(--emerald-primary); font-family: var(--font-mono); font-size: 0.8rem; padding-left: 1.1rem;">Simplilearn Certified</span>
+                <span style="color: var(--accent-primary); font-family: var(--font-mono); font-size: 0.8rem; padding-left: 1.1rem;">Simplilearn Certified</span>
               </li>
             </ul>
           </div>
