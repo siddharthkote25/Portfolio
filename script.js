@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const projectData = {
     solar: {
       title: "Tiny Solar Supply (Sunlight In, 3.3 V Out)",
-      badge: "KiCad 9 :: Micropower Boost Converter (Elektor Lab)",
+      badge: "KiCad 10 :: Micropower Boost Converter (Elektor Lab)",
       overview: "Designed based on the Elektor Lab design to convert a solar-charged 1.2V Ni-MH AA/AAA cell into a steady, regulated 3.3V power rail suitable for microcontrollers and IoT sensors.",
       specs: [
         { label: "Step-Up Controller", value: "AP3015 / AP3015A (Diodes Inc.)" },
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     datalogger: {
       title: "MCU Data Logger – ATmega328P Acquisition Board",
-      badge: "KiCad 9 :: 2-Layer Embedded Acquisition Board",
+      badge: "KiCad 10 :: 2-Layer Embedded Acquisition Board",
       overview: "End-to-end battery-backed embedded data logging hardware designed in KiCad using modular hierarchical sheets and optimized 2-layer routing.",
       images: [
         { url: "assets/images/datalogger-3d.png", label: "3D KiCad Raytraced Board" },
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     safesteps: {
       title: "SafeSteps – ESP32 Personal Safety Device",
-      badge: "KiCad 9 :: IoT, Cellular & Telematics Hardware",
+      badge: "KiCad 10 :: IoT, Cellular & Telematics Hardware",
       overview: "Custom hardware platform for a portable personal safety device integrating satellite navigation, cellular communication, and tactile emergency alerts.",
       images: [
         { url: "assets/images/safesteps-3d.png", label: "3D KiCad Board View" },
