@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 180" width="100%" height="100%">
+  <!-- Background -->
+  <rect x="0" y="0" width="340" height="180" fill="#070c18" />
+  <rect x="10" y="10" width="320" height="160" rx="8" fill="#090f1d" stroke="#1E293B" stroke-width="1.5"/>
+  
+  <!-- Power rails -->
+  <line x1="30" y1="40" x2="310" y2="40" stroke="#2563EB" stroke-width="1.5" stroke-dasharray="4 2"/>
+  <text x="35" y="32" font-family="'JetBrains Mono', monospace" font-size="8" fill="#38BDF8">SOLAR IN / 1.2V Ni-MH</text>
+  <text x="250" y="32" font-family="'JetBrains Mono', monospace" font-size="8" fill="#38BDF8">VOUT: 3.3V</text>
+
+  <!-- AP3015 Chip Body -->
+  <rect x="120" y="60" width="100" height="70" rx="4" fill="#0f182a" stroke="#38BDF8" stroke-width="1.5"/>
+  <text x="170" y="90" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="bold" fill="#F8FAFC" text-anchor="middle">AP3015</text>
+  <text x="170" y="105" font-family="'JetBrains Mono', monospace" font-size="7.5" fill="#94A3B8" text-anchor="middle">STEP-UP DC/DC</text>
+
+  <!-- Passives: Inductor, Diode -->
+  <rect x="55" y="68" width="35" height="18" rx="2" fill="#152238" stroke="#38BDF8" stroke-width="1"/>
+  <text x="72" y="80" font-family="'JetBrains Mono', monospace" font-size="7" fill="#F8FAFC" text-anchor="middle">10µH</text>
+
+  <rect x="250" y="68" width="35" height="18" rx="2" fill="#152238" stroke="#38BDF8" stroke-width="1"/>
+  <text x="267" y="80" font-family="'JetBrains Mono', monospace" font-size="7" fill="#F8FAFC" text-anchor="middle">SS14</text>
+
+  <!-- 2N7002 Day/Night Control -->
+  <rect x="55" y="115" width="45" height="24" rx="2" fill="#0f182a" stroke="#2563EB" stroke-width="1"/>
+  <text x="77" y="130" font-family="'JetBrains Mono', monospace" font-size="7" fill="#38BDF8" text-anchor="middle">2N7002</text>
+
+  <!-- Connection Lines -->
+  <path d="M30 77 H55 M90 77 H120 M220 77 H250 M285 77 H310" stroke="#38BDF8" stroke-width="1.5"/>
+  <path d="M77 95 V115" stroke="#2563EB" stroke-width="1.2"/>
+</svg>

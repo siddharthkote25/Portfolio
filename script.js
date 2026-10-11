@@ -72,77 +72,86 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 3. Project Detail Modal Data & Logic
   const projectData = {
-    solar: {
-      title: "Tiny Solar Supply (Sunlight In, 3.3 V Out)",
-      badge: "KiCad 10 :: Micropower Boost Converter (Elektor Lab)",
-      overview: "Designed based on the Elektor Lab design to convert a solar-charged 1.2V Ni-MH AA/AAA cell into a steady, regulated 3.3V power rail suitable for microcontrollers and IoT sensors.",
-      specs: [
-        { label: "Step-Up Controller", value: "AP3015 / AP3015A (Diodes Inc.)" },
-        { label: "Input Voltage Range", value: "1.0V to 1.2V Ni-MH Cell (starts up down to 1.0V for A-version)" },
-        { label: "Output Voltage", value: "Regulated 3.3V (Set by Vout = 1.23 × (1 + R1/R2) with R1=1M, R2=604k)" },
-        { label: "Output Current", value: "100 mA (AP3015A) / up to 350 mA (AP3015 standard)" },
-        { label: "Automatic Shutdown", value: "2N7002 SOT-23 N-FET (Shuts down regulator while charging under sunlight)" },
-        { label: "Schottky Diodes", value: "2x SS14 (DO-214AC)" },
-        { label: "Inductor", value: "10 µH, 680 mA rated current" },
-        { label: "Passives Footprints", value: "0805 Resistors & Capacitors (4.7µF, 22µF, 10pF)" }
-      ],
-      highlights: [
-        "Automatic day/night solar switching: solar voltage biases the 2N7002 gate, pulling /SHDN low to disable the boost converter while charging, then releasing /SHDN at dusk.",
-        "Precision resistor divider (R1=1MΩ, R2=604kΩ 1%) generates exactly 3.3V for clean MCU powering.",
-        "Ultra-compact layout optimized to fit inside miniature weatherproof solar lighting enclosures.",
-        "Comprehensive component placement with dedicated ground returns for high-frequency switching loops."
-      ],
-      githubLink: "https://github.com/siddharthkote25"
-    },
     datalogger: {
-      title: "MCU Data Logger – ATmega328P Acquisition Board",
-      badge: "KiCad 10 :: 2-Layer Embedded Acquisition Board",
-      overview: "End-to-end battery-backed embedded data logging hardware designed in KiCad using modular hierarchical sheets and optimized 2-layer routing.",
+      title: "MCU Data Logger",
+      badge: "KiCad • ATmega328P • 2-Layer PCB",
+      overview: "A battery-powered data logger based on the ATmega328P microcontroller, featuring real-time timekeeping with the DS1337 RTC, 256 KB non-volatile EEPROM data logging, and external sensor headers.",
       images: [
-        { url: "assets/images/datalogger-3d.png", label: "3D KiCad Raytraced Board" },
-        { url: "assets/images/datalogger-pcb.png", label: "2D PCB Layout & Routing" },
-        { url: "assets/images/datalogger-schematic.png", label: "KiCad Schematic (Sheet 1)" }
+        { url: "assets/projects/mcu-data-logger/pcb-3d.png", label: "3D PCB Render" },
+        { url: "assets/projects/mcu-data-logger/schematic.png", label: "KiCad Schematic" },
+        { url: "assets/projects/mcu-data-logger/pcb-layout.png", label: "PCB Layout" },
+        { url: "assets/projects/mcu-data-logger/routing.png", label: "Trace Routing" }
       ],
-      specs: [
-        { label: "Microcontroller", value: "ATmega328P-AU (32-pin TQFP)" },
-        { label: "Real-Time Clock", value: "DS1337 I2C RTC with dedicated crystal oscillator" },
-        { label: "Non-Volatile Storage", value: "2x 24LC1025 I2C EEPROMs (256 KB total memory)" },
-        { label: "Communication Buses", value: "I2C, UART, GPIO headers, and standard 6-pin ICSP" },
-        { label: "Board Architecture", value: "Hierarchical Schematic (MCU, RTC, EEPROM, Connectors)" },
-        { label: "PCB Stackup", value: "2-Layer Board with Top/Bottom Solid Copper Ground Fills" },
-        { label: "Manufacturability", value: "100% DRC verified, standard 0.25mm trace/space, Gerber RS-274X" }
+      design: "Engineered as a compact 2-layer PCB in KiCad. The circuit layout separates the microcontroller core, high-precision crystal oscillator, and external communication interfaces with solid copper ground fills to minimize noise and maintain signal stability.",
+      keyComponents: [
+        { name: "ATmega328P-AU", role: "Main microcontroller (32-pin TQFP package)" },
+        { name: "DS1337 RTC", role: "I2C real-time clock with dedicated 32.768 kHz crystal oscillator" },
+        { name: "2x 24LC1025 EEPROMs", role: "Non-volatile storage memory (256 KB total) over I2C bus" },
+        { name: "Decoupling Capacitors", role: "100nF ceramic capacitors placed close to IC power pins" },
+        { name: "ICSP Header", role: "Standard 6-pin AVR in-system programming interface" }
       ],
-      highlights: [
-        "Hierarchical schematic sheets ensuring strict signal modularity, net labeling, and power flags.",
-        "Strategically located high-frequency crystal and decoupling capacitors placed in close proximity to ATmega328P VCC/GND pins.",
-        "I2C pull-up resistors tuned for reliable high-speed EEPROM and RTC bus communication without bus contention.",
-        "Full copper ground pours with thermal relief on both layers ensuring low impedance and easy soldering."
+      tools: ["KiCad", "Schematic Capture", "PCB Editor", "ERC / DRC", "Gerber Generation"],
+      designProcess: [
+        "Created circuit schematic with hierarchical structure, net labels, and power flags in KiCad.",
+        "Verified component footprints against manufacturer datasheets.",
+        "Placed decoupling capacitors directly adjacent to MCU and IC power pins.",
+        "Routed critical power, ground, and I2C signal lines on a 2-layer layout.",
+        "Performed Electrical Rules Check (ERC) and Design Rules Check (DRC) to fix layout issues.",
+        "Generated standard Gerber and Excellon drill files for PCB manufacturing."
       ],
       githubLink: "https://github.com/siddharthkote25"
     },
     safesteps: {
-      title: "SafeSteps – ESP32 Personal Safety Device",
-      badge: "KiCad 10 :: IoT, Cellular & Telematics Hardware",
-      overview: "Custom hardware platform for a portable personal safety device integrating satellite navigation, cellular communication, and tactile emergency alerts.",
+      title: "SafeSteps – Personal Safety Device",
+      badge: "KiCad • ESP32 • GPS & 4G LTE",
+      overview: "An ESP32-based personal safety device integrating satellite GPS positioning, 4G cellular telemetry, an emergency tactile button trigger, buzzer alert, and power management in a wearable form factor.",
       images: [
-        { url: "assets/images/safesteps-3d.png", label: "3D KiCad Board View" },
-        { url: "assets/images/safesteps-pcb.png", label: "2D PCB Layout & Routing" },
-        { url: "assets/images/safesteps-schematic.png", label: "KiCad Schematic Sheet" }
+        { url: "assets/projects/safesteps/pcb-3d.png", label: "3D PCB Render" },
+        { url: "assets/projects/safesteps/schematic.png", label: "KiCad Schematic" },
+        { url: "assets/projects/safesteps/pcb-layout.png", label: "PCB Layout" },
+        { url: "assets/projects/safesteps/routing.png", label: "Trace Routing" }
       ],
-      specs: [
-        { label: "Main Processor", value: "ESP32 (Wi-Fi, Bluetooth BLE, Dual Tensilica Cores)" },
-        { label: "GPS / GNSS Module", value: "NEO-6M Satellite Positioning Engine" },
-        { label: "Cellular Telemetry", value: "A7670C 4G LTE High-Speed Cellular Module" },
-        { label: "User Interface / Alert", value: "Emergency SOS push-button, status LEDs, and high-decibel Buzzer" },
-        { label: "Power Supply", value: "Rechargeable Li-Po battery input with HT7333 3.3V ultra-low quiescent LDO" },
-        { label: "Communication Links", value: "High-speed UART interfaces from ESP32 to GPS and LTE modems" },
-        { label: "Library Assets", value: "Custom schematic symbols & high-accuracy PCB footprint models created in KiCad" }
+      design: "Built around an ESP32 microcontroller with isolated UART communication links to the NEO-6M GPS receiver and A7670C 4G modem. Includes an onboard HT7333 low-quiescent 3.3V voltage regulator powered by a rechargeable Li-Po cell.",
+      keyComponents: [
+        { name: "ESP32-DEVKIT-V1", role: "Primary microcontroller handling sensor logic and modems" },
+        { name: "NEO-6M GPS Module", role: "Satellite positioning engine for real-time location capture" },
+        { name: "A7670C 4G LTE Modem", role: "Cellular transceiver for sending emergency SMS alerts" },
+        { name: "HT7333 LDO Regulator", role: "Ultra-low quiescent current 3.3V voltage regulation" },
+        { name: "Emergency Push-Button & Buzzer", role: "Tactile emergency SOS trigger with acoustic siren alert" }
       ],
-      highlights: [
-        "Configured specialized net classes and clearance constraints for cellular RF and high-current power nets.",
-        "Integrated ultra-low dropout HT7333 regulator delivering steady 3.3V while maximizing battery runtime from single-cell Li-Po.",
-        "Component layout engineered to minimize digital switching noise coupling into the sensitive GPS RF receiver.",
-        "Full design verified with DRC (0 errors) and complete production Gerber export."
+      tools: ["KiCad", "Schematic Capture", "PCB Editor", "Footprint Wizard", "DRC Verification", "Gerber Export"],
+      designProcess: [
+        "Captured schematic connections connecting the ESP32 to GPS and cellular modems via UART.",
+        "Designed and assigned accurate footprints for all modular headers and IC components.",
+        "Arranged board layout keeping antenna paths and RF modules clear from switching noise.",
+        "Routed power lines with wider traces to accommodate cellular transmission peak currents.",
+        "Ran DRC checks to verify trace clearances and hole sizes against fabrication requirements.",
+        "Generated manufacturing Gerber and drill files."
+      ],
+      githubLink: "https://github.com/siddharthkote25"
+    },
+    solar: {
+      title: "Tiny Solar Supply",
+      badge: "KiCad • Power Supply • AP3015",
+      overview: "A compact 1.2V to 3.3V boost power supply circuit designed to step up a single solar-charged 1.2V Ni-MH AA/AAA cell to a regulated 3.3V power rail for low-power embedded electronics and sensor nodes.",
+      images: [
+        { url: "assets/projects/tiny-solar-supply/schematic.svg", label: "Circuit Schematic Architecture" }
+      ],
+      design: "Utilizes the AP3015 step-up DC/DC boost converter IC. Includes an autonomous day/night control feature where the solar cell voltage biases the gate of a 2N7002 N-MOSFET, pulling the shutdown pin low to disable the converter while charging under sunlight.",
+      keyComponents: [
+        { name: "AP3015 / AP3015A", role: "Micropower step-up DC/DC converter IC" },
+        { name: "10 µH Power Inductor", role: "High-efficiency inductor for boost switching loop" },
+        { name: "SS14 Schottky Diode", role: "Low forward-voltage rectifier diode" },
+        { name: "2N7002 N-Channel MOSFET", role: "Automatic solar-biased shutdown controller" },
+        { name: "Feedback Resistor Network", role: "Precision voltage divider establishing regulated 3.3V output" }
+      ],
+      tools: ["KiCad", "Schematic Capture", "Component Sizing", "Circuit Analysis"],
+      designProcess: [
+        "Selected AP3015 converter IC capable of low-voltage startup from a single 1.2V Ni-MH battery.",
+        "Calculated feedback voltage divider values to maintain clean 3.3V output regulation.",
+        "Implemented daylight detection circuit via 2N7002 gate biasing for autonomous operation.",
+        "Selected appropriate SMD passives and verified footprints in KiCad.",
+        "Organized schematic sheets and generated documentation."
       ],
       githubLink: "https://github.com/siddharthkote25"
     }
@@ -241,10 +250,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const galleryHtml = data.images && data.images.length ? `
       <div style="margin-bottom: 1.5rem;">
-        <h4 class="modal-gallery-title">KiCad Hardware Visuals (Tap to inspect full resolution)</h4>
+        <h4 class="modal-gallery-title">KiCad Project Visuals (Tap to view high-resolution)</h4>
         <div class="modal-gallery">
           ${data.images.map((img, idx) => `
-            <div class="modal-gallery-item" data-index="${idx}" title="Tap to open high-resolution view">
+            <div class="modal-gallery-item" data-index="${idx}" title="Tap to inspect full resolution">
               <img src="${img.url}" alt="${img.label}">
               <span class="modal-gallery-label">${img.label} ⤢</span>
             </div>
@@ -257,32 +266,48 @@ document.addEventListener('DOMContentLoaded', () => {
       <div style="margin-bottom: 1.25rem;">
         <span class="tag" style="margin-bottom: 0.5rem; display: inline-block;">${data.badge}</span>
         <h3 style="font-size: 1.5rem; color: #F8FAFC; margin-bottom: 0.5rem;">${data.title}</h3>
-        <p style="color: #94A3B8; font-size: 0.95rem;">${data.overview}</p>
       </div>
 
       ${galleryHtml}
 
       <div style="margin-bottom: 1.5rem;">
-        <h4 style="font-size: 1.02rem; color: #38BDF8; margin-bottom: 0.75rem; font-family: var(--font-mono);">Hardware Specifications & Circuit Details</h4>
-        <div style="background: #0c1322; border: 1px solid #1E293B; border-radius: 8px; padding: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
-          ${data.specs.map(s => `
-            <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-family: var(--font-mono); flex-wrap: wrap; gap: 0.2rem;">
-              <span style="color: #64748B;">${s.label}:</span>
-              <span style="color: #F8FAFC; font-weight: 500; text-align: right;">${s.value}</span>
+        <h4 style="font-size: 1.02rem; color: #38BDF8; margin-bottom: 0.5rem; font-family: var(--font-mono);">Project Overview</h4>
+        <p style="color: #94A3B8; font-size: 0.92rem; line-height: 1.6;">${data.overview}</p>
+      </div>
+
+      <div style="margin-bottom: 1.5rem;">
+        <h4 style="font-size: 1.02rem; color: #38BDF8; margin-bottom: 0.5rem; font-family: var(--font-mono);">Design</h4>
+        <p style="color: #CBD5E1; font-size: 0.92rem; line-height: 1.6;">${data.design}</p>
+      </div>
+
+      <div style="margin-bottom: 1.5rem;">
+        <h4 style="font-size: 1.02rem; color: #38BDF8; margin-bottom: 0.75rem; font-family: var(--font-mono);">Key Components</h4>
+        <div style="background: #0c1322; border: 1px solid #1E293B; border-radius: 8px; padding: 1rem; display: flex; flex-direction: column; gap: 0.6rem;">
+          ${data.keyComponents.map(c => `
+            <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-family: var(--font-mono); flex-wrap: wrap; gap: 0.25rem;">
+              <span style="color: #38BDF8; font-weight: 600;">${c.name}:</span>
+              <span style="color: #CBD5E1; text-align: right;">${c.role}</span>
             </div>
           `).join('')}
         </div>
       </div>
 
       <div style="margin-bottom: 1.5rem;">
-        <h4 style="font-size: 1.02rem; color: #38BDF8; margin-bottom: 0.75rem; font-family: var(--font-mono);">Engineering Highlights</h4>
-        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem;">
-          ${data.highlights.map(h => `
+        <h4 style="font-size: 1.02rem; color: #38BDF8; margin-bottom: 0.6rem; font-family: var(--font-mono);">Tools</h4>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+          ${data.tools.map(t => `<span class="tag">${t}</span>`).join('')}
+        </div>
+      </div>
+
+      <div style="margin-bottom: 1.5rem;">
+        <h4 style="font-size: 1.02rem; color: #38BDF8; margin-bottom: 0.75rem; font-family: var(--font-mono);">Design Process</h4>
+        <ol style="list-style: none; display: flex; flex-direction: column; gap: 0.55rem; padding-left: 0;">
+          ${data.designProcess.map((step, idx) => `
             <li style="font-size: 0.88rem; color: #CBD5E1; display: flex; gap: 0.6rem; line-height: 1.5;">
-              <span style="color: #38BDF8;">✔</span> ${h}
+              <span style="color: #38BDF8; font-family: var(--font-mono); font-weight: 600;">0${idx + 1}.</span> <span>${step}</span>
             </li>
           `).join('')}
-        </ul>
+        </ol>
       </div>
 
       <div style="padding-top: 1rem; border-top: 1px solid #1E293B; display: flex; justify-content: flex-end; gap: 0.8rem; flex-wrap: wrap;">
@@ -326,17 +351,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 4. In-Card Interactive Multi-View Tabs (3D / 2D Layout / Schematic)
+  // 4. In-Card Interactive Multi-View Tabs (3D / PCB Layout / Schematic / Routing)
   const projectViews = {
     datalogger: {
-      '3d': { src: 'assets/images/datalogger-3d.png', badge: '3D KiCad View' },
-      'pcb': { src: 'assets/images/datalogger-pcb.png', badge: '2D PCB Layout' },
-      'sch': { src: 'assets/images/datalogger-schematic.png', badge: 'Schematic Sheet' }
+      '3d': { src: 'assets/projects/mcu-data-logger/pcb-3d.png', badge: '3D View' },
+      'pcb': { src: 'assets/projects/mcu-data-logger/pcb-layout.png', badge: 'PCB Layout' },
+      'sch': { src: 'assets/projects/mcu-data-logger/schematic.png', badge: 'Schematic' },
+      'routing': { src: 'assets/projects/mcu-data-logger/routing.png', badge: 'Routing' }
     },
     safesteps: {
-      '3d': { src: 'assets/images/safesteps-3d.png', badge: '3D KiCad View' },
-      'pcb': { src: 'assets/images/safesteps-pcb.png', badge: '2D PCB Layout' },
-      'sch': { src: 'assets/images/safesteps-schematic.png', badge: 'Schematic Sheet' }
+      '3d': { src: 'assets/projects/safesteps/pcb-3d.png', badge: '3D View' },
+      'pcb': { src: 'assets/projects/safesteps/pcb-layout.png', badge: 'PCB Layout' },
+      'sch': { src: 'assets/projects/safesteps/schematic.png', badge: 'Schematic' },
+      'routing': { src: 'assets/projects/safesteps/routing.png', badge: 'Routing' }
+    },
+    solar: {
+      'sch': { src: 'assets/projects/tiny-solar-supply/schematic.svg', badge: 'Schematic' }
     }
   };
 
