@@ -293,7 +293,7 @@
 
             <!-- Image Viewport with click-to-zoom -->
             <div class="project-preview has-image clickable-preview" data-project="datalogger" title="Click to view full resolution">
-              <img id="img-datalogger" src="assets/images/datalogger-3d.png" alt="MCU Data Logger KiCad View" class="project-img">
+              <img id="img-datalogger" src="assets/images/datalogger-3d.png" alt="MCU Data Logger KiCad View" class="project-img" loading="lazy">
               <span class="preview-badge" id="badge-datalogger">3D KiCad View</span>
               <div class="zoom-overlay">
                 <span>Inspect Full Size &rarr;</span>
@@ -349,7 +349,7 @@
 
             <!-- Image Viewport with click-to-zoom -->
             <div class="project-preview has-image clickable-preview" data-project="safesteps" title="Click to view full resolution">
-              <img id="img-safesteps" src="assets/images/safesteps-3d.png" alt="SafeSteps ESP32 KiCad View" class="project-img">
+              <img id="img-safesteps" src="assets/images/safesteps-3d.png" alt="SafeSteps ESP32 KiCad View" class="project-img" loading="lazy">
               <span class="preview-badge" id="badge-safesteps">3D KiCad View</span>
               <div class="zoom-overlay">
                 <span>Inspect Full Size &rarr;</span>
@@ -583,6 +583,26 @@
       <div class="modal-body" id="modal-content">
         <!-- Injected dynamically via script.js -->
       </div>
+    </div>
+  </div>
+
+  <!-- Dedicated High-Resolution Hardware Lightbox (Touch & Swipe Enabled) -->
+  <div class="lightbox" id="image-lightbox" aria-hidden="true" role="dialog" aria-label="Hardware Lightbox Viewer">
+    <div class="lightbox-overlay" id="lightbox-overlay"></div>
+    <div class="lightbox-dialog">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Close lightbox">&times;</button>
+      <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous image">&#10094;</button>
+      <div class="lightbox-body">
+        <img id="lightbox-img" src="" alt="PCB Inspection View" class="lightbox-img">
+        <div class="lightbox-footer">
+          <div class="lightbox-meta">
+            <span id="lightbox-label" class="lightbox-label"></span>
+            <span id="lightbox-counter" class="lightbox-counter"></span>
+          </div>
+          <a id="lightbox-raw-link" href="#" target="_blank" rel="noopener" class="lightbox-raw-link">View Full File &rarr;</a>
+        </div>
+      </div>
+      <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next image">&#10095;</button>
     </div>
   </div>
 

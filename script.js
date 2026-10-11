@@ -1,19 +1,42 @@
 // Interactive behaviors for Siddharth Kote's PCB Portfolio (Dark Navy + Electric Cyan Theme)
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Mobile Menu Toggle
+  // 1. Mobile Menu Toggle with Accessible State & Outside Click Handling
   const mobileToggle = document.getElementById('mobile-toggle');
   const navLinks = document.getElementById('nav-links');
 
   if (mobileToggle && navLinks) {
-    mobileToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
+    const closeMobileMenu = () => {
+      navLinks.classList.remove('active');
+      mobileToggle.classList.remove('active');
+      mobileToggle.setAttribute('aria-expanded', 'false');
+    };
+
+    const toggleMobileMenu = () => {
+      const isOpen = navLinks.classList.toggle('active');
+      mobileToggle.classList.toggle('active', isOpen);
+      mobileToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    };
+
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMobileMenu();
     });
 
     navLinks.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-      });
+      link.addEventListener('click', closeMobileMenu);
+    });
+
+    document.addEventListener('click', (e) => {
+      if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && !mobileToggle.contains(e.target)) {
+        closeMobileMenu();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+        closeMobileMenu();
+      }
     });
   }
 
@@ -125,6 +148,88 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  // Dedicated Hardware Inspection Lightbox Manager
+  const lightbox = document.getElementById('image-lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxLabel = document.getElementById('lightbox-label');
+  const lightboxCounter = document.getElementById('lightbox-counter');
+  const lightboxRawLink = document.getElementById('lightbox-raw-link');
+  const lightboxClose = document.getElementById('lightbox-close');
+  const lightboxPrev = document.getElementById('lightbox-prev');
+  const lightboxNext = document.getElementById('lightbox-next');
+  const lightboxOverlay = document.getElementById('lightbox-overlay');
+
+  let currentGalleryImages = [];
+  let currentGalleryIndex = 0;
+
+  function showLightboxImage(index) {
+    if (!currentGalleryImages.length) return;
+    currentGalleryIndex = (index + currentGalleryImages.length) % currentGalleryImages.length;
+    const item = currentGalleryImages[currentGalleryIndex];
+    if (lightboxImg) {
+      lightboxImg.style.opacity = '0.35';
+      lightboxImg.src = item.url;
+      lightboxImg.alt = item.label || 'PCB Hardware Inspection';
+      setTimeout(() => {
+        lightboxImg.style.opacity = '1';
+      }, 70);
+    }
+    if (lightboxLabel) lightboxLabel.textContent = item.label || '';
+    if (lightboxCounter) lightboxCounter.textContent = `${currentGalleryIndex + 1} / ${currentGalleryImages.length}`;
+    if (lightboxRawLink) lightboxRawLink.href = item.url;
+  }
+
+  function openLightbox(images, startIndex = 0) {
+    if (!images || !images.length || !lightbox) return;
+    currentGalleryImages = images;
+    showLightboxImage(startIndex);
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.classList.remove('active');
+    const modalEl = document.getElementById('project-modal');
+    if (!modalEl || !modalEl.classList.contains('active')) {
+      document.body.style.overflow = '';
+    }
+  }
+
+  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+  if (lightboxOverlay) lightboxOverlay.addEventListener('click', closeLightbox);
+  if (lightboxPrev) lightboxPrev.addEventListener('click', () => showLightboxImage(currentGalleryIndex - 1));
+  if (lightboxNext) lightboxNext.addEventListener('click', () => showLightboxImage(currentGalleryIndex + 1));
+
+  // Touch Swipe for Mobile Lightbox Navigation
+  let touchStartX = 0;
+  let touchEndX = 0;
+  if (lightbox) {
+    lightbox.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    lightbox.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diffX = touchEndX - touchStartX;
+      if (Math.abs(diffX) > 40) {
+        if (diffX > 0) {
+          showLightboxImage(currentGalleryIndex - 1);
+        } else {
+          showLightboxImage(currentGalleryIndex + 1);
+        }
+      }
+    }, { passive: true });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (lightbox && lightbox.classList.contains('active')) {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showLightboxImage(currentGalleryIndex - 1);
+      if (e.key === 'ArrowRight') showLightboxImage(currentGalleryIndex + 1);
+    }
+  });
+
   const modal = document.getElementById('project-modal');
   const modalContent = document.getElementById('modal-content');
   const modalClose = document.getElementById('modal-close');
@@ -136,13 +241,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const galleryHtml = data.images && data.images.length ? `
       <div style="margin-bottom: 1.5rem;">
-        <h4 class="modal-gallery-title">KiCad Hardware Visuals (Click to view full size)</h4>
+        <h4 class="modal-gallery-title">KiCad Hardware Visuals (Tap to inspect full resolution)</h4>
         <div class="modal-gallery">
-          ${data.images.map(img => `
-            <a href="${img.url}" target="_blank" rel="noopener" class="modal-gallery-item" title="Click to view full resolution in new tab">
+          ${data.images.map((img, idx) => `
+            <div class="modal-gallery-item" data-index="${idx}" title="Tap to open high-resolution view">
               <img src="${img.url}" alt="${img.label}">
-              <span class="modal-gallery-label">${img.label} ↗</span>
-            </a>
+              <span class="modal-gallery-label">${img.label} ⤢</span>
+            </div>
           `).join('')}
         </div>
       </div>
@@ -161,9 +266,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <h4 style="font-size: 1.02rem; color: #38BDF8; margin-bottom: 0.75rem; font-family: var(--font-mono);">Hardware Specifications & Circuit Details</h4>
         <div style="background: #0c1322; border: 1px solid #1E293B; border-radius: 8px; padding: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
           ${data.specs.map(s => `
-            <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-family: var(--font-mono);">
+            <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-family: var(--font-mono); flex-wrap: wrap; gap: 0.2rem;">
               <span style="color: #64748B;">${s.label}:</span>
-              <span style="color: #F8FAFC; font-weight: 500; text-align: right; max-width: 60%;">${s.value}</span>
+              <span style="color: #F8FAFC; font-weight: 500; text-align: right;">${s.value}</span>
             </div>
           `).join('')}
         </div>
@@ -180,12 +285,22 @@ document.addEventListener('DOMContentLoaded', () => {
         </ul>
       </div>
 
-      <div style="padding-top: 1rem; border-top: 1px solid #1E293B; display: flex; justify-content: flex-end; gap: 0.8rem;">
+      <div style="padding-top: 1rem; border-top: 1px solid #1E293B; display: flex; justify-content: flex-end; gap: 0.8rem; flex-wrap: wrap;">
         <a href="${data.githubLink}" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
           View on GitHub &rarr;
         </a>
       </div>
     `;
+
+    // Connect modal gallery items to the full-screen Lightbox
+    if (data.images && data.images.length) {
+      modalContent.querySelectorAll('.modal-gallery-item').forEach(item => {
+        item.addEventListener('click', () => {
+          const idx = parseInt(item.getAttribute('data-index'), 10) || 0;
+          openLightbox(data.images, idx);
+        });
+      });
+    }
 
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
