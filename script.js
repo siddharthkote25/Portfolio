@@ -480,25 +480,3 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Form submit handler
-function handleFormSubmit() {
-  const statusEl = document.getElementById('form-status');
-  const submitBtn = document.getElementById('submit-btn');
-
-  if (submitBtn) {
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...';
-  }
-
-  setTimeout(() => {
-    if (statusEl) {
-      statusEl.style.color = '#38BDF8';
-      statusEl.textContent = '✓ Message received! Siddharth will get back to you shortly.';
-    }
-    if (submitBtn) {
-      submitBtn.textContent = 'Sent Successfully';
-    }
-    const form = document.getElementById('contact-form');
-    if (form) form.reset();
-  }, 800);
-}
