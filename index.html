@@ -369,18 +369,20 @@
 
           <!-- Project 3: Tiny Solar Supply -->
           <div class="project-card" data-category="power">
-            <!-- Header -->
+            <!-- Interactive Multi-View Card Header -->
             <div class="card-view-header">
               <div class="view-tabs" data-project-id="solar">
-                <button class="view-tab-btn active" data-view="sch">Schematic</button>
+                <button class="view-tab-btn active" data-view="3d">3D</button>
+                <button class="view-tab-btn" data-view="pcb">PCB Layout</button>
+                <button class="view-tab-btn" data-view="sch">Schematic</button>
               </div>
-              <span class="interactive-hint">AP3015 Step-Up</span>
+              <span class="interactive-hint">Tap tab to switch &rarr;</span>
             </div>
 
-            <!-- Preview Visual -->
+            <!-- Image Viewport with click-to-zoom -->
             <div class="project-preview has-image clickable-preview" data-project="solar" title="Click to view project details">
-              <img id="img-solar" src="assets/projects/tiny-solar-supply/schematic.svg" alt="Tiny Solar Supply Schematic Visual" class="project-img" loading="lazy">
-              <span class="preview-badge" id="badge-solar">Schematic</span>
+              <img id="img-solar" src="assets/projects/tiny-solar-supply/pcb-3d.png" alt="Tiny Solar Supply KiCad View" class="project-img" loading="lazy">
+              <span class="preview-badge" id="badge-solar">3D View</span>
               <div class="zoom-overlay">
                 <span>View Project &rarr;</span>
               </div>
@@ -389,18 +391,18 @@
             <div class="project-info">
               <h3 class="project-title">Tiny Solar Supply</h3>
               <p class="project-desc">
-                A compact 1.2V to 3.3V boost power supply designed for low-power embedded electronics.
+                A compact 1.2V to 3.3V boost power supply designed for low-power embedded electronics with automatic solar day/night switching.
               </p>
               <div class="project-tags">
-                <span class="tag">KiCad</span>
+                <span class="tag">KiCad 9</span>
                 <span class="tag">Power Supply</span>
-                <span class="tag">AP3015</span>
+                <span class="tag">AP3015A</span>
                 <span class="tag">3.3V Regulation</span>
                 <span class="tag">PCB Design</span>
               </div>
               <div class="project-actions">
                 <button class="btn btn-sm btn-primary view-details-btn" data-project="solar">View Project &rarr;</button>
-                <a href="https://github.com/siddharthkote25" target="_blank" rel="noopener" class="icon-link" title="GitHub Repository" aria-label="GitHub Repository">
+                <a href="https://github.com/siddharthkote25/solar-supply-" target="_blank" rel="noopener" class="icon-link" title="GitHub Repository" aria-label="GitHub Repository">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                 </a>
               </div>

@@ -132,28 +132,32 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     solar: {
       title: "Tiny Solar Supply",
-      badge: "KiCad • Power Supply • AP3015",
-      overview: "A compact 1.2V to 3.3V boost power supply circuit designed to step up a single solar-charged 1.2V Ni-MH AA/AAA cell to a regulated 3.3V power rail for low-power embedded electronics and sensor nodes.",
+      badge: "KiCad 9 • Boost Converter • AP3015A",
+      overview: "A compact solar-charged 3.3V boost power supply designed in KiCad. It charges a single 1.2V Ni-MH AA cell from a solar panel and boosts it to a regulated 3.3V output using the AP3015A micropower boost converter, switching automatically between daytime charging and nighttime boosting.",
       images: [
-        { url: "assets/projects/tiny-solar-supply/schematic.svg", label: "Circuit Schematic Architecture" }
+        { url: "assets/projects/tiny-solar-supply/pcb-3d.png", label: "3D PCB Render" },
+        { url: "assets/projects/tiny-solar-supply/schematic.png", label: "KiCad Schematic" },
+        { url: "assets/projects/tiny-solar-supply/pcb-layout.png", label: "PCB Layout" }
       ],
-      design: "Utilizes the AP3015 step-up DC/DC boost converter IC. Includes an autonomous day/night control feature where the solar cell voltage biases the gate of a 2N7002 N-MOSFET, pulling the shutdown pin low to disable the converter while charging under sunlight.",
+      design: "Designed around the AP3015A step-up DC/DC converter. During daytime, the solar panel charges the 1.2V Ni-MH battery through Schottky diode D2 and biases the gate of MOSFET T1 (2N7002), pulling /SHDN low to disable the boost converter. At night, solar voltage drops, releasing /SHDN to boost battery voltage to 3.3V set by feedback divider R1/R2 (1 MΩ / 604 kΩ 1%). PCB layout features a minimized high-frequency switching loop, SMD passives (0805/1206), and clear pin headers for solar, battery, control, and output.",
       keyComponents: [
-        { name: "AP3015 / AP3015A", role: "Micropower step-up DC/DC converter IC" },
-        { name: "10 µH Power Inductor", role: "High-efficiency inductor for boost switching loop" },
-        { name: "SS14 Schottky Diode", role: "Low forward-voltage rectifier diode" },
-        { name: "2N7002 N-Channel MOSFET", role: "Automatic solar-biased shutdown controller" },
-        { name: "Feedback Resistor Network", role: "Precision voltage divider establishing regulated 3.3V output" }
+        { name: "AP3015AKTR-G1 (IC1)", role: "Micropower step-up (boost) DC/DC converter in SOT-23-5" },
+        { name: "2N7002 (T1/Q1)", role: "N-channel MOSFET for automatic solar day/night /SHDN control" },
+        { name: "SS14 (D1, D2)", role: "Schottky diodes: D1 boost rectifier, D2 battery charging path" },
+        { name: "ASPI-0630LR-100M-T15 (L1)", role: "10 µH shielded SMD power boost inductor" },
+        { name: "1.2V Ni-MH AA Cell", role: "Rechargeable energy storage battery" },
+        { name: "Feedback Divider (R1, R2)", role: "Precision divider (1 MΩ / 604 kΩ 1%) setting 3.3V output" }
       ],
-      tools: ["KiCad", "Schematic Capture", "Component Sizing", "Circuit Analysis"],
+      tools: ["KiCad 9", "Schematic Capture", "PCB Layout", "Component Placement", "Routing", "Footprint Integration"],
       designProcess: [
-        "Selected AP3015 converter IC capable of low-voltage startup from a single 1.2V Ni-MH battery.",
-        "Calculated feedback voltage divider values to maintain clean 3.3V output regulation.",
-        "Implemented daylight detection circuit via 2N7002 gate biasing for autonomous operation.",
-        "Selected appropriate SMD passives and verified footprints in KiCad.",
-        "Organized schematic sheets and generated documentation."
+        "Captured circuit schematic in KiCad covering boost converter, automatic day/night shutdown stage, and feedback network.",
+        "Calculated R1/R2 feedback resistor values (1 MΩ / 604 kΩ) to achieve regulated 3.3V output from 1.2V battery input.",
+        "Integrated symbols and custom footprints for AP3015A, SS14 diodes, and ASPI shielded inductor.",
+        "Arranged PCB component placement to minimize the boost converter switching loop between inductor, diode, and IC.",
+        "Routed power, ground, and signal traces with ground returns and silkscreen labeling.",
+        "Verified layout and exported 3D board renders, schematics, and manufacturing documentation."
       ],
-      githubLink: "https://github.com/siddharthkote25"
+      githubLink: "https://github.com/siddharthkote25/solar-supply-"
     }
   };
 
@@ -366,7 +370,9 @@ document.addEventListener('DOMContentLoaded', () => {
       'routing': { src: 'assets/projects/safesteps/routing.png', badge: 'Routing' }
     },
     solar: {
-      'sch': { src: 'assets/projects/tiny-solar-supply/schematic.svg', badge: 'Schematic' }
+      '3d': { src: 'assets/projects/tiny-solar-supply/pcb-3d.png', badge: '3D View' },
+      'pcb': { src: 'assets/projects/tiny-solar-supply/pcb-layout.png', badge: 'PCB Layout' },
+      'sch': { src: 'assets/projects/tiny-solar-supply/schematic.png', badge: 'Schematic' }
     }
   };
 
